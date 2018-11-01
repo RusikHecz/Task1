@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <style>
+      #cards .card{
+        border:1px solid red;
+        display:flex;
+        width:300px;
+      }
+      #cards .card .title{
+        flex-grow: 1;
+      }
+      #cards .card .price{
+        font-weight: bold;
+        padding-right: 20px;
+      }
+      #loading{
+        display: none;
+      }
+      #cards{
+        width:300px;
+        height:200px;
+        border: 1px solid blue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button>Load</button>
+    <div id="cards">
+      <img width="300px" height="200px" id="loading" src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"/>
+    </div>
+   <script type="text/javascript" defer>
+	  var options = [{"maker":"Toyota","model":"Camry 50","price":50000},{"maker":"Toyota","model":"Carina","price":40000},{"maker":"Volkswagen","model":"Tuareg","price":35000},{"maker":"Mercedes","model":"C100","price":45000}];
+		var load = document.getElementsByTagName('button')[0];
+		var cards = document.getElementById("cards");
+		var loading = document.getElementById("loading");
+		load.addEventListener("click",function(){
+	    loading.style.display = "block";
+	    cards.style.height = "300px";
+	    load.disabled = true;
+	    setTimeout(function(){
+	        loading.style.display = "none";
+	        for(let i =0;i<options.length;i++){
+	            cards.innerHTML += "<div class = 'card'><p class = 'title'>" +options[i]["maker"]+ " " + options[i]["model"] +"</p><span class = 'price'>" + options[i]["price"] + "</span></div>";
+	        	}
+	    	},1000);
+		});
+   </script>
+
+  </body>
+
+</html>
